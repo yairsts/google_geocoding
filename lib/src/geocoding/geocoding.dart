@@ -97,8 +97,8 @@ class Geocoding {
     List<String> resultType,
     List<String> locationType,
   }) async {
-    assert(latlng != null);
     LatLon latlng = LatLon(lat, lon);
+    assert(latlng != null);
     var queryParameters = GeocodingParameters.createReverseParameters(
       apiKEY,
       latlng,
