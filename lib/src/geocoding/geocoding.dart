@@ -92,12 +92,13 @@ class Geocoding {
   /// specified latlng, then discards those results that do not match the specified location type(s). Note: This parameter is
   /// available only for requests that include an API key or a client ID.
   Future<GeocodingResponse> getReverse(
-    LatLon latlng, {
+    double lat, double lon, {
     String language,
     List<String> resultType,
     List<String> locationType,
   }) async {
     assert(latlng != null);
+    LatLon latlng = LatLon(lat, lon);
     var queryParameters = GeocodingParameters.createReverseParameters(
       apiKEY,
       latlng,
