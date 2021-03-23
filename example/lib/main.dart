@@ -247,8 +247,7 @@ class _HomePageState extends State<HomePage> {
                                 color: Colors.white,
                               ),
                             ),
-                            title:
-                                Text(geocodingResults[index].formattedAddress),
+                            title: Text(geocodingResults[index].formattedAddress),
                             onTap: () {
                               debugPrint(geocodingResults[index].placeId);
                               Navigator.push(
@@ -273,17 +272,14 @@ class _HomePageState extends State<HomePage> {
                                 color: Colors.white,
                               ),
                             ),
-                            title: Text(reverseGeocodingResults[index]
-                                .formattedAddress),
+                            title: Text(reverseGeocodingResults[index].formattedAddress),
                             onTap: () {
-                              debugPrint(
-                                  reverseGeocodingResults[index].placeId);
+                              debugPrint(reverseGeocodingResults[index].placeId);
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => DetailsPage(
-                                    placeId:
-                                        reverseGeocodingResults[index].placeId,
+                                    placeId: reverseGeocodingResults[index].placeId,
                                   ),
                                 ),
                               );
@@ -321,7 +317,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   void reverseGeocodingSearch(LatLon latlng) async {
-    var response = await googleGeocoding.geocoding.getReverse(latlng);
+    var response = await googleGeocoding.geocoding.getReverse(latlng.latitude, latlng.longitude);
     if (response != null && response.results != null) {
       if (mounted) {
         setState(() {
@@ -461,10 +457,7 @@ class _DetailsPageState extends State<DetailsPage> {
                             child: Icon(Icons.location_on),
                           ),
                           title: Text(
-                            detailsResult != null &&
-                                    detailsResult.formattedAddress != null
-                                ? 'Address: ${detailsResult.formattedAddress}'
-                                : "Address: null",
+                            detailsResult != null && detailsResult.formattedAddress != null ? 'Address: ${detailsResult.formattedAddress}' : "Address: null",
                           ),
                         ),
                       ),
@@ -475,9 +468,7 @@ class _DetailsPageState extends State<DetailsPage> {
                             child: Icon(Icons.location_searching),
                           ),
                           title: Text(
-                            detailsResult != null &&
-                                    detailsResult.geometry != null &&
-                                    detailsResult.geometry.location != null
+                            detailsResult != null && detailsResult.geometry != null && detailsResult.geometry.location != null
                                 ? 'Geometry: ${detailsResult.geometry.location.lat.toString()},${detailsResult.geometry.location.lng.toString()}'
                                 : "Geometry: null",
                           ),
@@ -490,10 +481,7 @@ class _DetailsPageState extends State<DetailsPage> {
                             child: Icon(Icons.timelapse),
                           ),
                           title: Text(
-                            detailsResult != null &&
-                                    detailsResult.utcOffset != null
-                                ? 'UTC offset: ${detailsResult.utcOffset.toString()} min'
-                                : "UTC offset: null",
+                            detailsResult != null && detailsResult.utcOffset != null ? 'UTC offset: ${detailsResult.utcOffset.toString()} min' : "UTC offset: null",
                           ),
                         ),
                       ),
@@ -504,10 +492,7 @@ class _DetailsPageState extends State<DetailsPage> {
                             child: Icon(Icons.rate_review),
                           ),
                           title: Text(
-                            detailsResult != null &&
-                                    detailsResult.rating != null
-                                ? 'Rating: ${detailsResult.rating.toString()}'
-                                : "Rating: null",
+                            detailsResult != null && detailsResult.rating != null ? 'Rating: ${detailsResult.rating.toString()}' : "Rating: null",
                           ),
                         ),
                       ),
@@ -518,10 +503,7 @@ class _DetailsPageState extends State<DetailsPage> {
                             child: Icon(Icons.attach_money),
                           ),
                           title: Text(
-                            detailsResult != null &&
-                                    detailsResult.priceLevel != null
-                                ? 'Price level: ${detailsResult.priceLevel.toString()}'
-                                : "Price level: null",
+                            detailsResult != null && detailsResult.priceLevel != null ? 'Price level: ${detailsResult.priceLevel.toString()}' : "Price level: null",
                           ),
                         ),
                       ),
